@@ -29,5 +29,5 @@ class TodosController < ApplicationController
     todo.destroy
     redirect_to :root
   end
-
+  
 end
