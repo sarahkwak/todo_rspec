@@ -1,0 +1,16 @@
+<h1>Welcome Awesome TODOs</h1>
+<p>Your current list of todo is: </p>
+<% @todos.each do |todo| %>
+  <ul>
+    <li>
+    <%= todo.contents %>
+    <%= link_to "Edit", [:edit, todo] %>
+    <%= link_to "Delete", todo, method: :delete %>
+    </li>
+  </ul>
+<% end %>
+<br>
+<%= form_for(@todo, url: todos_path(@todo), html: {method: "post"}) do |f| %>
+  <%= f.text_field :contents, id: 'contents', size: "60x12" %>
+  <%= f.submit "New Task" %>
+<% end %>

@@ -1,0 +1,5 @@
+Let's update your Task!
+<%= form_for(@todo, url: todo_path(@todo), html: {method: "patch"}) do |f| %>
+  <%= f.text_field :contents, id:'contents', size: "60x12" %>
+  <%= f.submit "Done" %>
+<% end %>
