@@ -1,11 +1,11 @@
 class TodosController < ApplicationController
   def index
-    @todos = Todo.all
+    @todos = Todo.where(user_id: current_user)
     @todo = Todo.new
   end
 
   def create
-    @todo = Todo.create(contents: params[:todo][:contents])
+    @todo = Todo.create(contents: params[:todo][:contents], user_id: current_user.id)
     redirect_to :root
   end 
 
@@ -29,5 +29,5 @@ class TodosController < ApplicationController
     todo.destroy
     redirect_to :root
   end
-  
+
 end
