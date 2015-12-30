@@ -20,14 +20,15 @@ class TodosController < ApplicationController
   def update
     @todo = Todo.find(params[:id])
     @todo.update(contents: params[:todo][:contents])
-    # @todo.save!
     redirect_to :root
   end
 
   def destroy
-    todo = Todo.find(params[:id])
-    todo.destroy
-    redirect_to :root
+    if current_user
+      todo = Todo.find(params[:id])
+      todo.destroy
+      redirect_to :root
+    end
   end
 
 end

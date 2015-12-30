@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :todo do
     contents "Make a cup of Tea"
+    user_id 1
   end
 end
 

@@ -27,4 +27,17 @@ RSpec.describe "Authentications", type: :feature do
     expect(page).to have_content user.name
     expect(page).to have_link "Sign out"
   end
+
+  it "only renders tasks that belong to the current user" do
+    user = FactoryGirl.create(:user)
+    todo = FactoryGirl.create(:todo)
+    visit root_path
+    fill_in :email, with: user.email
+    fill_in "Password", with: user.password
+    click_button "Log in"
+    fill_in "contents", with: "Shops at TJMaxx"
+    click_button "New Task"
+    expect(current_path).to eq "/"
+    expect(page).to have_content "Shops"
+  end
 end

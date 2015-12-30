@@ -37,6 +37,6 @@ RSpec.describe "CreateTodos", type: :feature do
     click_link "Delete"
     expect(page).to have_content "Awesome"
     expect(Todo.count).to eql_to 0
-  end 
+  end  
 
 end
